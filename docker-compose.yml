@@ -1,39 +1,19 @@
 version: "3"
 services:
-  # backend:
-  #   container_name: docker-node-mongo
-  #   restart: always
-  #   build: ./stemply-bot-node
-  #   ports:
-  #     - "3000:3000"
-  #   links:
-  #     - mongo
-
-  # mongo:
-  #   container_name: mongo
-  #   image: mongo
-  #   ports:
-  #     - "27019:27017"
-
-  # telegram_bot:
-  #   container_name: telegram_bot
-  #   restart: always
-  #   build: ./stemply-bot
-  #   links:
-  #     - backend
-
-  backend:
+  flask:
     container_name: flask
     restart: always
     build: ./backend
     ports:
       - "5000:5000"
 
-  angular:
+  angular-app:
     container_name: angular-app
     restart: always
     build: ./angular-app
     ports:
       - "4200:4200"
     links:
-      - backend
+      - flask
+    depends_on:
+      - flask

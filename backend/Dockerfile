@@ -5,9 +5,9 @@ WORKDIR /app
 
 COPY . .
 
-ENV TOKEN="5488409861:AAHzpFNAAyDPehYJFcQN0oWisKdA3dHrkwQ"
-
 RUN pip install -r requirements.txt
+
+EXPOSE 5000
 
 ENTRYPOINT ["python"]
 CMD ["app.py"]

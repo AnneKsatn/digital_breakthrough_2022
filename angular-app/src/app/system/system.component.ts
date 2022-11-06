@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UrlHandlingStrategy } from '@angular/router';
 var DG = require('2gis-maps');
+import { environment } from 'src/environments/environment';
 
 
 // const  mapgl
@@ -65,7 +66,7 @@ export class SystemComponent implements OnInit {
   }
 
   getExistingRivals() {
-    this.httpClient.get('http://127.0.0.1:5000/postmats/rivals').subscribe((data: any) => {
+    this.httpClient.get(`http://${environment.api}:5000/postmats/rivals`).subscribe((data: any) => {
       console.log(data)
 
       console.log(data)
@@ -95,7 +96,7 @@ export class SystemComponent implements OnInit {
     console.log(this.val)
 
     this.httpClient.get(
-      `http://127.0.0.1:5000/postmats/reccomended?districts[]=${districts}&amount=${this.val}`
+      `http://${environment.api}:5000/postmats/reccomended?districts[]=${districts}&amount=${this.val}`
     ).subscribe((data: any) => {
 
       this.map.remove()

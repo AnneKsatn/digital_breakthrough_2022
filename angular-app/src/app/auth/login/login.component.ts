@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     console.log(this.form.value.password)
 
     this.httpClient.get(
-      `http://127.0.0.1:5000/login?login=${this.form.value.email}&pass=${this.form.value.password}`).subscribe((data: any) => {
+      `http://${environment.api}:5000/login?login=${this.form.value.email}&pass=${this.form.value.password}`).subscribe((data: any) => {
         if (data == true) {
           this.router.navigateByUrl("system/home-page")
         }
