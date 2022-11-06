@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { load } from '@2gis/mapgl';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UrlHandlingStrategy } from '@angular/router';
 var DG = require('2gis-maps');
 
 
@@ -97,6 +98,12 @@ export class SystemComponent implements OnInit {
       `http://127.0.0.1:5000/postmats/reccomended?districts[]=${districts}&amount=${this.val}`
     ).subscribe((data: any) => {
 
+      this.map.remove()
+      this.map = DG.map('container', {
+        'center': [this.latitude, this.longitude],
+        'zoom': 13
+      });
+
       const reccomended_postmats = data["data"]
 
       console.log(reccomended_postmats)
@@ -104,10 +111,17 @@ export class SystemComponent implements OnInit {
       // this.markers = this.markers.slice(0, 5)
 
       reccomended_postmats.forEach((postmat: any) => {
-        // console.log([postmat[3], postmat[4]])
+
+        var myIcon = DG.icon({
+          iconUrl: 'assets/recloc.png',
+          iconSize: [32, 32],
+          iconAnchor: [22, 94],
+          // className: "icon-recommended"
+        });
+
         DG.marker(
           [postmat[3], postmat[4]],
-          { title: "Постамат конкурент" })
+          { title: "Постамат конкурент", icon: myIcon })
           .addTo(this.map).bindPopup('Постамат конкурент');;
       });
     })
