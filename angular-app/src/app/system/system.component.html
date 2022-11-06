@@ -1,0 +1,34 @@
+<div class="system">
+    <div class="content">
+        <div id="container"></div>
+    </div>
+    <div class="description">
+        <div class="heading">
+            <h1>МОСКОВСКИЙ ПОСТАМАТ</h1>
+        </div>
+        <div class="card">
+            <div>Количество планируемых постаматов</div>
+            
+            <p-inputNumber [(ngModel)]="val"></p-inputNumber>
+        </div>
+        <div class="card">
+            <div>Планируемая зона</div>
+            <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" optionLabel="title"></p-multiSelect>
+        </div>
+
+        <div class="btn-count" (click)="count()"> 
+            рассчитать
+        </div>
+
+        <div class="btn-block">
+            <div class="btn">экспорт в pdf</div>
+            <div class="btn">экспорт в excel</div>
+        </div>
+
+
+        <div class="btn-rivals" (click)="getExistingRivals()">отобразить конкурентов</div>
+
+    </div>
+    <div class="legend">
+    </div>
+</div>

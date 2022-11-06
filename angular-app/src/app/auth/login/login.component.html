@@ -1,0 +1,30 @@
+<div class="login-page">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <p>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-envelope"></i>
+                    <input type="text" pInputText id="email" placeholder="Email" formControlName="email" />
+                </span>
+            </p>
+
+
+            <p>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-lock"></i>
+                    <input type="password" pInputText id="password" placeholder="Пароль" formControlName="password" />
+                </span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <button pButton pRipple type="submit" label="Войти" class="btn p-button-outlined"></button>
+        </div>
+
+        <!-- <div class="form-group">
+            <button pButton pRipple label="Войти как представитель логистической компании" class="btn p-button-link"
+                (click)="loginLogistCompany()"></button>
+        </div> -->
+    </form>
+</div>
