@@ -7,13 +7,6 @@ var DG = require('2gis-maps');
 import { environment } from 'src/environments/environment';
 
 
-// const  mapgl
-
-
-// import { mapgl } from "@googlemaps/js-api-loader"
-
-
-
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
@@ -55,13 +48,6 @@ export class SystemComponent implements OnInit {
       { title: 'Западный административный округ' },
       { title: 'Новомосковский административный округ' },
       { title: 'Троицкий административный округ' },
-
-
-      // { name: 'New York', code: 'NY' },
-      // { name: 'Rome', code: 'RM' },
-      // { name: 'London', code: 'LDN' },
-      // { name: 'Istanbul', code: 'IST' },
-      // { name: 'Paris', code: 'PRS' }
     ];
   }
 
@@ -72,7 +58,6 @@ export class SystemComponent implements OnInit {
       console.log(data)
 
       this.markers = data["data"]
-      this.markers = this.markers.slice(0, 5)
 
       this.markers.forEach((coord) => {
         console.log([coord[1], coord[0]])
@@ -126,5 +111,21 @@ export class SystemComponent implements OnInit {
           .addTo(this.map).bindPopup('Постамат конкурент');;
       });
     })
+  }
+
+  removeExistingRivals() {
+    this.latitude = this.map.getCenter().lat
+    this.longitude = this.map.getCenter().lng
+
+    this.map.remove()
+
+    this.map = DG.map('container', {
+      'center': [this.latitude, this.longitude],
+      'zoom': 12
+    });
+
+    if (this.selectedCities.length != 0) {
+      this.count()
+    }
   }
 } 

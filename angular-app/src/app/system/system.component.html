@@ -8,7 +8,7 @@
         </div>
         <div class="card">
             <div>Количество планируемых постаматов</div>
-            
+
             <p-inputNumber [(ngModel)]="val"></p-inputNumber>
         </div>
         <div class="card">
@@ -16,7 +16,7 @@
             <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" optionLabel="title"></p-multiSelect>
         </div>
 
-        <div class="btn-count" (click)="count()"> 
+        <div class="btn-count" (click)="count()">
             рассчитать
         </div>
 
@@ -27,8 +27,15 @@
 
 
         <div class="btn-rivals" (click)="getExistingRivals()">отобразить конкурентов</div>
+        <div class="btn-rivals" (click)="removeExistingRivals()">скрыть конкурентов</div>
 
     </div>
     <div class="legend">
+        <div class="legend-item">
+            <div class="icon">
+            </div>
+            <div>Рекомендуемые постматы</div>
+        </div>
+
     </div>
 </div>
